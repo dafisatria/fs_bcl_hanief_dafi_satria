@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_pengiriman')->unique();
+            $table->uuid('nomor_pengiriman')->unique();
             $table->date('tanggal_pengiriman');
             $table->string('lokasi_asal');
             $table->string('lokasi_tujuan');
