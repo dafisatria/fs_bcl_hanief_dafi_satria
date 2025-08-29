@@ -10,10 +10,23 @@ class ArmadaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $armadas = Armada::all();
-        return view('armadas.index', compact('armadas'));
+        $query = Armada::query();
+
+        if ($request->filled('jenis')) {
+            $query->where('jenis_kendaraan', $request->jenis);
+        }
+
+        if ($request->filled('ketersediaan')) {
+            $query->where('ketersediaan', $request->ketersediaan);
+        }
+
+        $armadas = $query->get();
+
+        $jenisList = Armada::select('jenis_kendaraan')->distinct()->pluck('jenis_kendaraan');
+
+        return view('armadas.index', compact('armadas', 'jenisList'));
     }
 
     /**

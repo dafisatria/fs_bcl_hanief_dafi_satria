@@ -9,6 +9,28 @@
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    <form method="GET" action="{{ route('armadas.index') }}" class="row g-2 mb-3">
+        <div class="col-md-3">
+            <select name="jenis" class="form-control">
+                <option value="">-- Semua Jenis --</option>
+                @foreach($jenisList as $jenis)
+                <option value="{{ $jenis }}" {{ request('jenis') == $jenis ? 'selected' : '' }}>{{ $jenis }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="ketersediaan" class="form-control">
+                <option value="">-- Semua Status --</option>
+                <option value="1" {{ request('ketersediaan') == '1' ? 'selected' : '' }}>Tersedia</option>
+                <option value="0" {{ request('ketersediaan') == '0' ? 'selected' : '' }}>Tidak Tersedia</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary w-100">Filter</button>
+        </div>
+    </form>
+
+
     <table class="table table-bordered">
         <thead>
             <tr>
