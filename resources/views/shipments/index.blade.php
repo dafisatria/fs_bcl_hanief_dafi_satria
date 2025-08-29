@@ -8,6 +8,17 @@
     @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+    <form method="GET" action="{{ route('shipments.index') }}" class="row g-2 mb-3">
+        <div class="col-md-3">
+            <input type="text" name="search" class="form-control" placeholder="Cari Nomor Pengiriman" value="{{ request('search') }}">
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="lokasi" class="form-control" placeholder="Cari Lokasi Tujuan" value="{{ request('lokasi') }}">
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary w-100">Cari</button>
+        </div>
+    </form>
 
     <table class="table table-bordered">
         <thead>

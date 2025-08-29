@@ -11,9 +11,20 @@ class ShipmentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $shipments = Shipment::with('armada')->get();
+        $query = Shipment::with('armada');
+
+        if ($request->filled('search')) {
+            $query->where('nomor_pengiriman', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('lokasi')) {
+            $query->where('lokasi_tujuan', 'like', '%' . $request->lokasi . '%');
+        }
+
+        $shipments = $query->get();
+
         return view('shipments.index', compact('shipments'));
     }
 
