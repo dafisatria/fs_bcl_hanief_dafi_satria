@@ -14,17 +14,20 @@
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Logistik App</a>
+            <a class="navbar-brand" href="{{ route('armadas.index') }}">Logistik App</a>
             <div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="{{ route('armadas.index') }}" class="nav-link">Armada</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Pengiriman</a>
+                        <a href="{{ route('shipments.index') }}" class="nav-link">Pengiriman</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Pemesanan</a>
+                        <a href="{{ route('bookings.index') }}" class="nav-link">Pemesanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('reports.shipments') }}" class="nav-link">Laporan Pengiriman</a>
                     </li>
                 </ul>
             </div>
